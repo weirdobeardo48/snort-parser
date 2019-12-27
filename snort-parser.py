@@ -21,7 +21,7 @@ def check_existed_rule(ip):
     while process.poll() is None:
         line = process.stdout.readline()
         line = line.decode("utf-8").strip()
-        if ip in line:
+        if ip in line and line.strip():
             print("%s is already blocked from pinging our fucking server" % ip)
             return True
     return False
