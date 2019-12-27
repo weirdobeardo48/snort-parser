@@ -41,10 +41,10 @@ if __name__ == '__main__':
                 if not check_existed_rule(str(ips[0])):
                     # temp fix since I don't have production environment to test it out
                     # So I'm gonna drop it first
-                    iptables_rule = "iptables -D INPUT -p icmp -s %s -m comment --comment \"Auto-Drop-ICMP-Via-Snort-By-TruongNX\" -j DROP" % (
+                    iptables_rule = "iptables -D INPUT -s %s -m comment --comment \"Auto-Drop-ICMP-Via-Snort-By-TruongNX\" -j DROP" % (
                         str(ips[0]))
                     # Then I would add it later --> wasted, but it works at the moment.
-                    iptables_rule = "iptables -I INPUT -p icmp -s %s -m comment --comment \"Auto-Drop-ICMP-Via-Snort-By-TruongNX\" -j DROP" % (
+                    iptables_rule = "iptables -I INPUT -s %s -m comment --comment \"Auto-Drop-ICMP-Via-Snort-By-TruongNX\" -j DROP" % (
                         str(ips[0]))
                     process = subprocess.run(iptables_rule.split(), stdout=subprocess.PIPE)
                     print("IP %s has been block from pinging our fucking server" % str(ips[0]))
